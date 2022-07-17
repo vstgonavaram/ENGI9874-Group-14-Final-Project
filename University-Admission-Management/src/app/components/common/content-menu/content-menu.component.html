@@ -1,0 +1,6 @@
+
+
+<div *ngIf="appItems != null" id="side-menu">
+    <ng-material-multilevel-menu [configuration]='config' [items]='appItems' (selectedItem)="selectedItem($event)">
+    </ng-material-multilevel-menu>
+  </div>

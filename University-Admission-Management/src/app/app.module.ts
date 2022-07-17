@@ -11,11 +11,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { AuthenticationService } from './services/auth/authentication.service';
 import { HttpInterceptorService } from './services/auth/http-interceptor.service';
@@ -23,13 +26,19 @@ import { ErrorHandlerService } from './services/error-handler.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RegisterComponent } from './components/register/register.component';
 import { PrintErrorComponent } from './components/print-error/print-error.component';
+import { ContentComponent } from './components/common/content/content.component';
+import { ContentMenuComponent } from './components/common/content-menu/content-menu.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PrintErrorComponent
+    PrintErrorComponent,
+    ContentComponent,
+    ContentMenuComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -45,11 +54,13 @@ import { PrintErrorComponent } from './components/print-error/print-error.compon
     MatInputModule,
     MatIconModule,
     MatTableModule,
-
+    MatSidenavModule,
+    MatGridListModule,
+    NgMaterialMultilevelMenuModule
   ],
   exports: [
     MatIconModule,
- 
+
     MatTableModule,
   ],
   providers: [AuthenticationService,

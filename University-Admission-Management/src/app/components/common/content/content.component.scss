@@ -1,0 +1,22 @@
+@import "../../../../variables.scss";
+.container-fluid {
+    min-height: $content-min-height;
+}
+
+.dashboard-menu {
+    background-color: rgb(241, 241, 241);
+    padding: 0px;
+    min-height: 100vh;
+    position: fixed;
+    // z-index: 999;
+}
+
+.dashboard-view {
+    padding: 0px;
+    margin-left: 16.666667%;
+}
+
+.example-container {
+    width: 100vw;
+    height: 100vh;
+  }

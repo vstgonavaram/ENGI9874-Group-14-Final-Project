@@ -54,33 +54,42 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loading = true;
-    this.authenticationService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
-      .subscribe(
-        (        response: any) => {
-          this.processLoginResponse(response, "Email or Password is incorrect")
 
-        },
-        (        error: any) => {
-          this.loading = false;
-          this.loginMessage = "Email or Password is incorrect";
-        }
-      );
+    this.processLoginResponse({status: true}, "Email or Password is incorrect")
+
+    // this.loading = true;
+    // this.authenticationService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
+    //   .subscribe(
+    //     (        response: any) => {
+    //       this.processLoginResponse(response, "Email or Password is incorrect")
+
+    //     },
+    //     (        error: any) => {
+    //       this.loading = false;
+    //       this.loginMessage = "Email or Password is incorrect";
+    //     }
+    //   );
   }
 
   onLoginRouting() {
 
-    if (this.authenticationService.isUserLoggedIn()) {
-      if (this.authenticationService.isSuperAdmin() == true || this.authenticationService.isUnivUser() == true) {
-        this.router.navigate(['admin']);
-      }
-      else if (this.authenticationService.isStudent() == true) {
-        this.router.navigate(['student/home']);
-      }
-      else {
-        this.router.navigate(['home']);
-      }
-    }
+    console.log('navigating to student home');
+
+    this.router.navigate(['app/student']);
+
+    // if (this.authenticationService.isUserLoggedIn()) {
+    //   if (this.authenticationService.isSuperAdmin() == true || this.authenticationService.isUnivUser() == true) {
+    //     this.router.navigate(['admin']);
+    //   }
+    //   else if (this.authenticationService.isStudent() == true) {
+    //     this.router.navigate(['student/home']);
+    //   }
+    //   else {
+    //     this.router.navigate(['home']);
+    //   }
+    // }
+
+    
   }
 
 }

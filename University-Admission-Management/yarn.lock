@@ -4433,6 +4433,13 @@ neo-async@^2.6.2:
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+ng-material-multilevel-menu@^5.5.3:
+  version "5.5.3"
+  resolved "https://registry.yarnpkg.com/ng-material-multilevel-menu/-/ng-material-multilevel-menu-5.5.3.tgz#c7bcfc59894c19f211d0d8b4ea820531d071385b"
+  integrity sha512-5iQMeWjwkV7byO+4uomp0t87lZ7q32me9FxYxB58R7KL5cLeE7p34gJEUjXUOwZKHZ8Slj8x2UEzIxhzCr3W+A==
+  dependencies:
+    tslib "^2.0.0"
+
 ngx-spinner@^13.1.1:
   version "13.1.1"
   resolved "https://registry.yarnpkg.com/ngx-spinner/-/ngx-spinner-13.1.1.tgz#3dfd97644d051398a4707d6b69655e35036a5419"
@@ -6106,7 +6113,7 @@ tslib@^1.13.0, tslib@^1.8.1, tslib@^1.9.0:
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.3.0, tslib@^2.3.1:
+tslib@^2.0.0, tslib@^2.3.0, tslib@^2.3.1:
   version "2.4.0"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
