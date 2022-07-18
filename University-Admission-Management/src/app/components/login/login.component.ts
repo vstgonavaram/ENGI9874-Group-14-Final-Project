@@ -27,15 +27,21 @@ export class LoginComponent implements OnInit {
       'password': ['', [Validators.required, Validators.minLength(6)]]
     })
 
+
+
+    this.onLoginRouting(false);
+
     
   }
 
-  processLoginResponse(response: { status: any; }, errorMessage: string) {
+  processLoginResponse(response: { status: any; data: any; }, errorMessage: string) {
 
     this.loading = false;
     if (response.status) {
 
-      this.onLoginRouting();
+      this.onLoginRouting(true);
+
+      this.authenticationService.afterLogin(response)
 
       // if (this.authenticationService.isSuperAdmin() == true) {
       //   this.router.navigate(['v1/admin']);
@@ -55,7 +61,21 @@ export class LoginComponent implements OnInit {
 
   login() {
 
-    this.processLoginResponse({status: true}, "Email or Password is incorrect")
+
+    let loginData = {
+      status : true,
+      data: {
+        user: {
+          email: 'saiteja@gmail.com',
+          firtName: 'sai theja',
+          lastName: 'Gonavaram',
+          role: 'student',
+        },
+        token: ''
+      }
+    }
+
+    this.processLoginResponse(loginData, "Email or Password is incorrect")
 
     // this.loading = true;
     // this.authenticationService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
@@ -71,23 +91,26 @@ export class LoginComponent implements OnInit {
     //   );
   }
 
-  onLoginRouting() {
+  onLoginRouting(mock: boolean) {
 
     console.log('navigating to student home');
 
-    this.router.navigate(['app/student']);
+    if (this.authenticationService.isUserLoggedIn()) {
+      if (this.authenticationService.isSuperAdmin() == true || this.authenticationService.isUnivUser() == true) {
+        this.router.navigate(['app/university/']);
+      }
+      else if (this.authenticationService.isStudent() == true) {
+        this.router.navigate(['app/student/applications']);
+      }
+      else {
+        this.router.navigate(['home']);
+      }
+    }
 
-    // if (this.authenticationService.isUserLoggedIn()) {
-    //   if (this.authenticationService.isSuperAdmin() == true || this.authenticationService.isUnivUser() == true) {
-    //     this.router.navigate(['admin']);
-    //   }
-    //   else if (this.authenticationService.isStudent() == true) {
-    //     this.router.navigate(['student/home']);
-    //   }
-    //   else {
-    //     this.router.navigate(['home']);
-    //   }
-    // }
+    if(mock){
+      this.router.navigate(['app/student']);
+    }
+
 
     
   }

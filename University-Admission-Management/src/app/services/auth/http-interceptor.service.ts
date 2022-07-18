@@ -31,7 +31,7 @@ export class HttpInterceptorService {
       request = request.clone({
         setHeaders: {
           ProviderUserkey: userDetails.user.userId,
-          current_role: userDetails.user.selectedRoleName ? userDetails.user.selectedRoleName : '',
+          current_role: userDetails.user.role ? userDetails.user.role : '',
           Authorization: "Bearer " + userDetails.token
         }
       });

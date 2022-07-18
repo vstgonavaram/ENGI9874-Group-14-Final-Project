@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyApplicationsComponent implements OnInit {
 
+  applications = [];
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  getApplications() {
+
+  }
+
+  
 
 }

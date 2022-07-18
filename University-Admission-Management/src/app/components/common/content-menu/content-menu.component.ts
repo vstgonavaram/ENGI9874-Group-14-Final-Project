@@ -40,15 +40,21 @@ export class ContentMenuComponent implements OnInit {
     // if (this.currentUser.selectedRoleName == this.Roles.univUser) {
       this.appItems = [
         {
-          label: 'Help Videos',
-          faIcon: 'fas fa-video',
-          link: '/v1/preview',
+          label: 'Applications',
+          faIcon: 'apps',
+          link: '/app/student/applications',
           items: []
         },
         {
-          label: 'Dashboard',
-          faIcon: 'far fa-chart-bar',
-          link: '/v1/dashboard',
+          label: 'Apply',
+          faIcon: 'school',
+          link: '/app/student/apply',
+          items: []
+        },
+        {
+          label: 'Profle',
+          faIcon: 'person',
+          link: '/app/student/profile',
           items: []
         }
       ];
@@ -127,7 +133,7 @@ export class ContentMenuComponent implements OnInit {
     //   ];
     // }
 
-
+      console.log('app items', this.appItems);
   }
 
   loadTabsSuperAdmin(): any {
@@ -151,6 +157,10 @@ export class ContentMenuComponent implements OnInit {
     } else {
       this.router.navigate([selectedTabObj[0].route]);
     }
+  }
+
+  logOut(){
+    this.authService.logout();
   }
 
 }

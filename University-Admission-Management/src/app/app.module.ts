@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
 
 import { AuthenticationService } from './services/auth/authentication.service';
 import { HttpInterceptorService } from './services/auth/http-interceptor.service';
@@ -29,6 +30,7 @@ import { PrintErrorComponent } from './components/print-error/print-error.compon
 import { ContentComponent } from './components/common/content/content.component';
 import { ContentMenuComponent } from './components/common/content-menu/content-menu.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { HeaderComponent } from './components/header/header.component';
     PrintErrorComponent,
     ContentComponent,
     ContentMenuComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { HeaderComponent } from './components/header/header.component';
     MatTableModule,
     MatSidenavModule,
     MatGridListModule,
-    NgMaterialMultilevelMenuModule
+    NgMaterialMultilevelMenuModule,
+    MatListModule
   ],
   exports: [
     MatIconModule,

@@ -12,11 +12,13 @@
 
   <mat-drawer-container class="example-container">
     <mat-drawer mode="side" opened>
-        Drawer content
         <app-content-menu></app-content-menu>
         </mat-drawer>
     <mat-drawer-content> 
-         <router-outlet></router-outlet>
+        <div class="drawer-content">
+            <router-outlet></router-outlet>
+        </div>
+    
     </mat-drawer-content>
   </mat-drawer-container>
   

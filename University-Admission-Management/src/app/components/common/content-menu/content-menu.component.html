@@ -1,6 +1,37 @@
 
 
-<div *ngIf="appItems != null" id="side-menu">
-    <ng-material-multilevel-menu [configuration]='config' [items]='appItems' (selectedItem)="selectedItem($event)">
-    </ng-material-multilevel-menu>
-  </div>
+<div class="side-nav-container">
+    <div *ngIf="appItems != null" class="side-menu">
+
+    
+        <mat-list role="list">
+            <mat-list-item *ngFor="let menuItem of appItems"  role="listitem" routerLink={{menuItem.link}}  routerLinkActive="router-link-active">
+                
+                <div class="nav-item" > 
+                    <span>
+                        <mat-icon>{{menuItem.faIcon}}</mat-icon> 
+                    </span>
+                    <span>
+                        {{menuItem.label}}
+                    </span>
+
+                </div>
+            </mat-list-item>
+    
+          </mat-list>
+      </div>
+
+      <div class="bottom-tabs">
+          <div class="bottom-tabs-item">
+              <span class="icon">
+                <mat-icon>person</mat-icon> 
+
+              </span>
+              <span class="label"> <p class="nav-item" (click)="logOut()">Sign out</p></span>
+          </div>
+       
+      </div>
+
+
+
+</div>
