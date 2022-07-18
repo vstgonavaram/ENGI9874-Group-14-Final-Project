@@ -1,0 +1,50 @@
+import { Injectable } from '@angular/core';
+import { Observable, tap } from 'rxjs';
+import { ApiService } from './api/api.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProgramService {
+
+  constructor( private apiService: ApiService,) { }
+
+  GetPrograms(): Observable<any> {
+    // return this.apiService.get(`api/programs/all`)
+    //   .pipe(tap((response: { data: any; }) => {
+    //     return response.data
+    //   }));
+
+    return new Observable((observer)=> {
+      observer.next([
+        {
+          id:1,
+          name: 'Computer Science - Work Term',
+          durationInMonths: 24,
+          description: 'The work term route Master’s program in Computer Science is a two-year program intended for students who wish to further develop their knowledge in Computer Science by expanding their expertise across a wide variety of fields, including Computer Graphics, Computational Theory, Algorithms, Data Visualization and Advanced Interaction Techniques, and be exposed to experience in applied computing as an student employee in a company within the information technology sector. Thus, students in this program are expected to have a Bachelor’s degree in Computer Science, or a similar degree in a related field, such as computer engineering, information technology, and other computing-related sciences.'
+        },
+        {
+          id:2,
+          name: 'Computer Science - Thesis',
+          durationInMonths: 24,
+          description: 'The work term route Master’s program in Computer Science is a two-year program intended for students who wish to further develop their knowledge in Computer Science by expanding their expertise across a wide variety of fields, including Computer Graphics, Computational Theory, Algorithms, Data Visualization and Advanced Interaction Techniques, and be exposed to experience in applied computing as an student employee in a company within the information technology sector. Thus, students in this program are expected to have a Bachelor’s degree in Computer Science, or a similar degree in a related field, such as computer engineering, information technology, and other computing-related sciences.'
+        },
+    
+      ])
+    })
+  }
+
+  ApplyForProgram(data: any): Observable<any> {
+    // return this.apiService.post(`api/program/apply`, data)
+    // .pipe(tap(response => {
+    //   return response
+    // }))
+
+    return new Observable((observer)=> {
+      observer.next({
+        status: true
+      })
+    })
+  }
+
+}

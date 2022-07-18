@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
           email: 'saiteja@gmail.com',
           firtName: 'sai theja',
           lastName: 'Gonavaram',
-          role: 'student',
+          role: 'STUDENT',
         },
         token: ''
       }
@@ -108,7 +108,7 @@ export class LoginComponent implements OnInit {
     }
 
     if(mock){
-      this.router.navigate(['app/student']);
+      this.router.navigate(['app/student/applications']);
     }
 
 

@@ -1,10 +1,47 @@
 
 
 <div class=" container-padding m-10">
-    <div class="glass mt-10">
+    <div class="glass apply-container">
         <h5>Apply</h5>
 
-        
+        <div class="form-container" *ngIf="programs.length > 0">
+
+            <div class="form-item">
+                <mat-form-field>
+                    <mat-label>Program</mat-label>
+                    <mat-select [(ngModel)]="selectedProgram">
+                      <mat-option *ngFor="let program of programs" [value]="program.id">
+                        {{program.name}} - {{program.durationInMonths}} Months
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+          
+
+              <div class="form-item">
+                  <p><b>Statement of Purpose</b></p>
+                <button type="button" mat-raised-button class="btn btn-md btn-secondary" (click)="fileInput.click()">Choose File</button>
+                <input hidden (change)="onFileSelected($event)" #fileInput type="file">
+                <span class="file-name">{{selectedFile?.name}}</span>
+              </div>
+
+              <div class="buton-container">
+                <button (click)="applyForUniversity()" class="btn btn-md btn-primary" [disabled]="selectedFile == null || selectedProgram == null">
+    
+                    <span>
+                      Submit
+                    </span>
+
+                  </button>
+              </div>
+
+           
+
+
+              
+
+        </div>
+
 
 
       

@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
+// import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -20,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AuthenticationService } from './services/auth/authentication.service';
 import { HttpInterceptorService } from './services/auth/http-interceptor.service';
@@ -32,6 +34,46 @@ import { ContentMenuComponent } from './components/common/content-menu/content-m
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+// const customNotifierOptions: NotifierOptions = {
+//   position: {
+//     horizontal: {
+//       position: 'middle',
+//       distance: 12
+//     },
+//     vertical: {
+//       position: 'bottom',
+//       distance: 35,
+//       gap: 10
+//     }
+//   },
+//   theme: 'material',
+//   behaviour: {
+//     autoHide: 5000,
+//     onClick: 'hide',
+//     onMouseover: 'pauseAutoHide',
+//     showDismissButton: true,
+//     stacking: 4
+//   },
+//   animations: {
+//     enabled: true,
+//     show: {
+//       preset: 'slide',
+//       speed: 300,
+//       easing: 'ease'
+//     },
+//     hide: {
+//       preset: 'fade',
+//       speed: 300,
+//       easing: 'ease',
+//       offset: 50
+//     },
+//     shift: {
+//       speed: 300,
+//       easing: 'ease'
+//     },
+//     overlap: 150
+//   }
+// };
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +83,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     ContentComponent,
     ContentMenuComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,11 +102,12 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatSidenavModule,
     MatGridListModule,
     NgMaterialMultilevelMenuModule,
-    MatListModule
+    MatListModule,
+    MatSelectModule,
   ],
   exports: [
     MatIconModule,
-
+    MatSelectModule,
     MatTableModule,
   ],
   providers: [AuthenticationService,

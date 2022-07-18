@@ -1,7 +1,10 @@
+import { ProgramService } from './../../../services/program.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { map, startWith } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
+// import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-apply',
@@ -15,26 +18,68 @@ export class ApplyComponent implements OnInit {
   loading = false;
   hide = true;
   applyForm: FormGroup = new FormGroup({});
+  
+  filteredProgramOptions: any = [];
+  selectedProgram: any = null;
 
-  programs = [
-    {
+  selectedFile: any = null;
 
-    },
 
-  ]
+  programs: any = []
 
   constructor( private fb: FormBuilder,
     private authenticationService: AuthenticationService,
-    private router: Router) { }
+    private router: Router,
+    private programService: ProgramService,
+  ) { }
 
   ngOnInit(): void {
+
+    this.loadPrograms();
+
   }
 
-  generateForm(){
-    this.applyForm = this.fb.group({
-      'program': ['', [Validators.required]],
-      'ielts': ['', [Validators.required]]
-    })
+  loadPrograms() {
+
+    this.programService.GetPrograms().subscribe((programs: any) => {      
+      this.programs = programs;
+    });
+  }
+
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0] ?? null;
+
+}
+
+  initializeForm(){
+  this.selectedProgram = null;
+  this.selectedFile = null;
+  }
+
+  applyForUniversity(){
+
+    console.log('selectedFile', this.selectedFile);
+    if(this.selectedFile != null || this.selectedProgram != null){
+     
+      const data = {
+        userId: 123,
+        programId: 21,
+        selectedFile: this.selectedFile,
+      }
+
+      this.programService.ApplyForProgram(data).subscribe((response: any) => {      
+        
+        console.log('response', response);
+
+        if(response.status){
+          // this.notifier.notify('success', "Application Submitted Successfully.");
+
+          console.log('Application Submitted Successfully')
+          this.initializeForm();
+        }
+
+      });
+    }
   }
 
 }
