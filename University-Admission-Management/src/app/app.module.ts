@@ -11,8 +11,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
-// import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -34,46 +33,46 @@ import { ContentMenuComponent } from './components/common/content-menu/content-m
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
-// const customNotifierOptions: NotifierOptions = {
-//   position: {
-//     horizontal: {
-//       position: 'middle',
-//       distance: 12
-//     },
-//     vertical: {
-//       position: 'bottom',
-//       distance: 35,
-//       gap: 10
-//     }
-//   },
-//   theme: 'material',
-//   behaviour: {
-//     autoHide: 5000,
-//     onClick: 'hide',
-//     onMouseover: 'pauseAutoHide',
-//     showDismissButton: true,
-//     stacking: 4
-//   },
-//   animations: {
-//     enabled: true,
-//     show: {
-//       preset: 'slide',
-//       speed: 300,
-//       easing: 'ease'
-//     },
-//     hide: {
-//       preset: 'fade',
-//       speed: 300,
-//       easing: 'ease',
-//       offset: 50
-//     },
-//     shift: {
-//       speed: 300,
-//       easing: 'ease'
-//     },
-//     overlap: 150
-//   }
-// };
+const customNotifierOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: 'middle',
+      distance: 12
+    },
+    vertical: {
+      position: 'bottom',
+      distance: 35,
+      gap: 10
+    }
+  },
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,9 +100,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatTableModule,
     MatSidenavModule,
     MatGridListModule,
-    NgMaterialMultilevelMenuModule,
     MatListModule,
     MatSelectModule,
+    NotifierModule.withConfig(customNotifierOptions)
   ],
   exports: [
     MatIconModule,
