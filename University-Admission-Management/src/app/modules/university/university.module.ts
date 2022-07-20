@@ -10,6 +10,12 @@ import { UnivApplicationsComponent } from './univ-applications/univ-applications
 import { AddUsersComponent } from './add-users/add-users.component';
 import { AddProgramsComponent } from './add-programs/add-programs.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+
 
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
@@ -24,6 +30,12 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
   ]
 })
 export class UniversityModule { }

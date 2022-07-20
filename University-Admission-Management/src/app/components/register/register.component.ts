@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
     console.log('data', data);
 
     this.authenticationService.register(data)
-      .subscribe(
+      .subscribe( 
         response => {
           // this.otpScreen = false;
           // this.accountCreationScreen = true;

@@ -1,0 +1,32 @@
+.add-user-form-container{
+    margin: 20px;
+
+    .btn-container{
+        margin-top: 10px;
+    }
+}
+
+.users-container{
+
+
+    .table{
+        td, th{
+            text-align: center;
+        }
+        th{
+            font-weight: 500;
+     
+         
+        }
+
+    }
+
+    .remove-icon{
+        mat-icon{
+            color: red !important;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}

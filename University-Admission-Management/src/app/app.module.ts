@@ -109,6 +109,7 @@ const customNotifierOptions: NotifierOptions = {
     MatSelectModule,
     MatTableModule,
     NgbModule,
+    MatFormFieldModule,
   ],
   providers: [AuthenticationService,
     {
