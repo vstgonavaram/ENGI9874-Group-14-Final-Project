@@ -1,0 +1,104 @@
+@import "../../../variables.scss";
+
+
+.login-card{
+    width: 400px;
+    margin: 100px auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+.login-text {
+  color: #2c6db3;
+  font-weight: 600;
+  text-align: center;
+}
+
+.info-container {
+  background-color: #ededed;
+  align-items: center;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #f5c6cb;
+}
+.login-error {
+  background: #da2828;
+  color: white;
+  margin: 20px 15px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.btn-container {
+  padding: 0 15px;
+  .btn {
+    width: 100%;
+  }
+}
+
+.shadow-button-container {
+  margin: auto;
+  padding: 0 15px;
+
+  .shadow-button {
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 25%);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: background-color 0.218s, border-color 0.218s, box-shadow 0.218s;
+    transition: background-color 0.218s, border-color 0.218s, box-shadow 0.218s;
+    -webkit-user-select: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    background-image: none;
+    color: #262626;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
+    border: 1px solid #dee0e2;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+
+    .content-wrapper {
+      height: 41px;
+
+      .button-icon {
+        float: left;
+        padding: 8px;
+
+        &-image {
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+
+    .button-contents {
+      font-family: Roboto, arial, sans-serif;
+      font-size: 14px;
+
+      font-weight: 500;
+      letter-spacing: 0.21px;
+
+      vertical-align: top;
+
+      line-height: 41px;
+      margin: auto;
+      color: #757575;
+    }
+  }
+}
