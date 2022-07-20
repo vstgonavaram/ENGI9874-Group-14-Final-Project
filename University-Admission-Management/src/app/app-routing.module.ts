@@ -1,3 +1,4 @@
+import { UniversityModule } from './modules/university/university.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContentComponent } from './components/common/content/content.component';
@@ -12,7 +13,11 @@ const routes: Routes = [
       {
         path: 'student',
         loadChildren: () => import('./modules/student/student.module').then(m => m.StudentModule)
-      },]
+      },
+      {
+        path: 'university',
+        loadChildren: () => import('./modules/university/university.module').then(m => m.UniversityModule)
+      }]
   },
   {
     path: 'login',
@@ -24,7 +29,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: LoginComponent
+    // component: LoginComponent
+   redirectTo: 'login', pathMatch: 'full'
   }
 
 ];

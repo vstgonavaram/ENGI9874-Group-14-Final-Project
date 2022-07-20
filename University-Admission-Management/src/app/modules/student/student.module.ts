@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'applications', component: MyApplicationsComponent },
   { path: 'apply', component: ApplyComponent },
-  { path: '**', component: MyApplicationsComponent },
+  { path: '**', redirectTo: 'applications', pathMatch: 'full' },
 ];
 
 const customNotifierOptions: NotifierOptions = {

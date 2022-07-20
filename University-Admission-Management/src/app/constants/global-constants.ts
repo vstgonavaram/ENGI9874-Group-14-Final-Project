@@ -10,9 +10,9 @@ export class GlobalConstants {
     
     public static RoleJson: any = {
     
-        univUser: 'UNIVERSITYUSER',
+        univUser: 'UNIVERSITYFACULTY',
         student: 'STUDENT',
-        superAdmin: 'SUPERADMIN',
+        univAdmin: 'UNIVERSITYADMIN',
       }
 
 

@@ -118,8 +118,8 @@ export class AuthenticationService {
     return !(this.getLoggedInUser() === undefined || this.getLoggedInUser() === null);
   }
 
-  isSuperAdmin() {
-    if (this.userDetails.user.role == this.GlobalConstants.RoleJson.superAdmin) {
+  isUnivAdmin() {
+    if (this.userDetails.user.role == this.GlobalConstants.RoleJson.univAdmin) {
       return true;
     } else {
       return false;

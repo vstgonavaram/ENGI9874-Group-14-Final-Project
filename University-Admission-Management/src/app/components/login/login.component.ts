@@ -67,9 +67,9 @@ export class LoginComponent implements OnInit {
       data: {
         user: {
           email: 'saiteja@gmail.com',
-          firtName: 'sai theja',
+          firstName: 'sai theja',
           lastName: 'Gonavaram',
-          role: 'STUDENT',
+          role: 'UNIVERSITYADMIN',
           id: 12,
         },
         token: ''
@@ -94,22 +94,23 @@ export class LoginComponent implements OnInit {
 
   onLoginRouting(mock: boolean) {
 
-    console.log('navigating to student home');
+    console.log('navigating to student home', this.authenticationService.isUserLoggedIn());
 
     if (this.authenticationService.isUserLoggedIn()) {
-      if (this.authenticationService.isSuperAdmin() == true || this.authenticationService.isUnivUser() == true) {
-        this.router.navigate(['app/university/']);
+      if (this.authenticationService.isUnivAdmin() == true) {
+        this.router.navigate(['app/university/admin']);
+      }
+      else if(this.authenticationService.isUnivUser() == true){
+        this.router.navigate(['app/university/applications']);
       }
       else if (this.authenticationService.isStudent() == true) {
         this.router.navigate(['app/student/applications']);
       }
-      else {
-        this.router.navigate(['home']);
-      }
     }
 
     if(mock){
-      this.router.navigate(['app/student/applications']);
+      console.log('mock navigating')
+      this.router.navigate(['app/university/admin']);
     }
 
 

@@ -201,6 +201,9 @@ body{
 
 
 .mat-table{
+    th{
+        font-size: 15px;
+    }
     td, th {
         text-align: center !important;
         vertical-align: middle !important;
@@ -208,6 +211,11 @@ body{
     
     .mat-sort-header-container {
         justify-content: center !important;
+    }
+
+    th{
+        background: #e6e6e6;
+        // color: black;
     }
 }
 .status-card{

@@ -108,6 +108,7 @@ const customNotifierOptions: NotifierOptions = {
     MatIconModule,
     MatSelectModule,
     MatTableModule,
+    NgbModule,
   ],
   providers: [AuthenticationService,
     {
