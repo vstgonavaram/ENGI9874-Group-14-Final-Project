@@ -20,7 +20,7 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password;
-	private String role;
+	private Integer role;
 	
 	
 	public Integer getId() {
@@ -53,14 +53,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRole() {
+	public Integer getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+	public void setRole(Integer role) {
 		this.role = role;
 	}
-	
-	
 	
 
 }

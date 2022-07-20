@@ -20,7 +20,7 @@ public class Application {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String applicationStatus;
+	private Integer applicationStatus;
 	private Boolean additionalDocumentRequest = false;
 	
 	@OneToOne
@@ -38,11 +38,24 @@ public class Application {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getApplicationStatus() {
+
+	public Integer getApplicationStatus() {
 		return applicationStatus;
 	}
-	public void setApplicationStatus(String applicationStatus) {
+	public void setApplicationStatus(Integer applicationStatus) {
 		this.applicationStatus = applicationStatus;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Document getDocument() {
+		return document;
+	}
+	public void setDocument(Document document) {
+		this.document = document;
 	}
 	public Boolean getAdditionalDocumentRequest() {
 		return additionalDocumentRequest;
