@@ -3,6 +3,9 @@
  */
 package com.university.controller;
 
+import java.util.Collections;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,13 +32,13 @@ public class LoginSignUp {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/signup")
-	public String signup(@RequestBody User user) {
+	public Map signup(@RequestBody User user) {
 		User u = userRepo.findByEmail(user.getEmail());
 		if (!ObjectUtils.isEmpty(u)) {
-			return "user already exists";
+			return Collections.singletonMap("status", false);
 		}
 		userRepo.save(user);
-		return "account created";
+		return Collections.singletonMap("status", true);
 
 	}
 	
