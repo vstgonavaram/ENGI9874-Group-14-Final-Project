@@ -5,6 +5,7 @@ package com.university.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,36 +23,36 @@ import com.university.repo.IUserRepo;
 @RestController
 
 public class LoginSignUp {
-	
-	@Autowired 
+
+	@Autowired
 	private IUserRepo userRepo;
-	
+
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/signup")
 	public String signup(@RequestBody User user) {
 		User u = userRepo.findByEmail(user.getEmail());
-		if(!ObjectUtils.isEmpty(u)) {
+		if (!ObjectUtils.isEmpty(u)) {
 			return "user already exists";
 		}
 		userRepo.save(user);
 		return "account created";
-		
+
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/login")
 	public String login(@RequestBody User user) {
-		
+
 		User u = userRepo.findByEmail(user.getEmail());
-		
-		if(ObjectUtils.isEmpty(u)) {
+
+		if (ObjectUtils.isEmpty(u)) {
 			return "login unsuccessfull";
 		}
-		if(user.getPassword().equals(u.getPassword())) {
+		if (user.getPassword().equals(u.getPassword())) {
 			return "login successfull";
 		}
 		return "login unsuccessfull";
-		
+
 	}
-	
-	
 
 }
