@@ -13,12 +13,12 @@ export class ApiService {
 
   private formatErrors(error: any) {
     // catchError(err => Observable.throw(error))
-    //console.log(error)
+    console.log(error)
     return  throwError(() => new Error(error.error));
   }
 
-  get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    return this.http.get(`${GlobalConstants.API_URL}${path}`, { params })
+  get(path: string): Observable<any> {
+    return this.http.get(`${GlobalConstants.API_URL}${path}`)
       .pipe(catchError(this.formatErrors));
   }
 

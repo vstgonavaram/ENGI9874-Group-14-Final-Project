@@ -42,16 +42,15 @@ export class RegisterComponent implements OnInit {
   }
 
   submitRegister() {
-    //this.showAccountCreationScreen();
-    //this.showAccountCreationScreen();
 
+    this.errorMessage = "";
 
     const data = {
       email: this.registerForm.controls['email'].value,
       password: this.registerForm.controls['password'].value,
-      confirmPassword: this.registerForm.controls['confirmPassword'].value,
       firstName: this.registerForm.controls['firstName'].value,
       lastName: this.registerForm.controls['lastName'].value,
+      role: 2,
     };
 
     console.log('data', data);
@@ -59,6 +58,8 @@ export class RegisterComponent implements OnInit {
     this.authenticationService.register(data)
       .subscribe( 
         response => {
+
+          console.log('user created', response);
           // this.otpScreen = false;
           // this.accountCreationScreen = true;
           if (response.status) {
@@ -69,6 +70,7 @@ export class RegisterComponent implements OnInit {
           }
         },
         error => {
+          console.log('error', error);
           this.loading = false;
           this.errorMessage = "Something wrong, please try again later";
         }

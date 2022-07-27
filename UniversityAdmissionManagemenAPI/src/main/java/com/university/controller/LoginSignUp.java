@@ -3,8 +3,12 @@
  */
 package com.university.controller;
 
+import java.util.Collections;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,18 +31,22 @@ public class LoginSignUp {
 	@Autowired 
 	private IUserRepo userRepo;
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/signup")
-	public String signup(@RequestBody User user) {
+	public Map signup(@RequestBody User user) {
 		User u = userRepo.findByEmail(user.getEmail());
 		if(!ObjectUtils.isEmpty(u)) {
-			return "user already exists";
+			 return Collections.singletonMap("status", false);
+
 		}
 		userRepo.save(user);
-		return "account created";
+		return Collections.singletonMap("status", true);
+
 		
 	}
 	
-	@GetMapping("/login")
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/login")
 	public UserEntity login(@RequestBody User user) {
 		
 		User u = userRepo.findByEmail(user.getEmail());
@@ -51,11 +59,11 @@ public class LoginSignUp {
 			userEntity.setMessage("Invalid Password");
 		}
 		if(user.getPassword().equals(u.getPassword())) {
-			userEntity.setEmail(user.getEmail());
-			userEntity.setFirstName(user.getFirstName());
-			userEntity.setId(user.getId());
-			userEntity.setLastName(user.getLastName());
-			userEntity.setRole(user.getRole());
+			userEntity.setEmail(u.getEmail());
+			userEntity.setFirstName(u.getFirstName());
+			userEntity.setId(u.getId());
+			userEntity.setLastName(u.getLastName());
+			userEntity.setRole(u.getRole());
 			userEntity.setMessage("Login Successfull");
 		}
 		return userEntity;

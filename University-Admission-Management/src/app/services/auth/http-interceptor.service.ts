@@ -26,13 +26,13 @@ export class HttpInterceptorService {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     var userDetails = this.authService.getLoggedInUser();
     this.manageLoaderCount(true, request);
+    console.log('userDetails', userDetails);
+
 
     if (userDetails !== undefined && userDetails !== null) {
       request = request.clone({
         setHeaders: {
-          ProviderUserkey: userDetails.user.userId,
-          current_role: userDetails.user.role ? userDetails.user.role : '',
-          Authorization: "Bearer " + userDetails.token
+
         }
       });
     }

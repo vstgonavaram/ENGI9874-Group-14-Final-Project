@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormService } from 'src/app/services/form.service';
+import { ProgramService } from 'src/app/services/program.service';
 
 @Component({
   selector: 'app-add-programs',
@@ -16,10 +17,13 @@ export class AddProgramsComponent implements OnInit {
   programs: any = [];
   constructor(private modalService: NgbModal,
     private formBuilder: FormBuilder,
-    private formService: FormService,) { }
+    private formService: FormService,
+    private programService: ProgramService,) { }
 
   ngOnInit(): void {
     this.generateForm();
+
+    this.loadPrograms();
   }
 
   generateForm() {
@@ -27,6 +31,16 @@ export class AddProgramsComponent implements OnInit {
       'programCode': ['', [Validators.required]],
       'programName': ['', [Validators.required]],
       'durationInMonths': ['', [Validators.required]],
+    });
+  }
+
+  loadPrograms() {
+
+    console.log('loading programs');
+
+    this.programService.GetPrograms().subscribe((programs: any) => {  
+      console.log('programs got', programs);    
+      this.programs = programs;
     });
   }
 
@@ -39,9 +53,16 @@ export class AddProgramsComponent implements OnInit {
 
     console.log('data', data);
 
-    this.programs.push(data);
+    // this.programs.push(data);
 
-    this.modalService.dismissAll();
+    // this.modalService.dismissAll();
+
+
+    this.programService.ApplyForProgram(data).subscribe((response: any) => {  
+      console.log('programs added', response);    
+      // this.programs = programs;
+    });
+
 
     this.generateForm();
 

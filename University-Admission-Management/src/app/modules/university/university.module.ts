@@ -15,6 +15,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorService } from 'src/app/services/auth/http-interceptor.service';
+import { ProgramService } from 'src/app/services/program.service';
 
 
 const routes: Routes = [
@@ -36,6 +39,12 @@ const routes: Routes = [
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-  ]
+    HttpClientModule,
+  ],
+  providers: [ProgramService,  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+  },]
 })
 export class UniversityModule { }

@@ -32,6 +32,7 @@ import { ContentComponent } from './components/common/content/content.component'
 import { ContentMenuComponent } from './components/common/content-menu/content-menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProgramService } from './services/program.service';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -118,6 +119,7 @@ const customNotifierOptions: NotifierOptions = {
       multi: true
     },
     ErrorHandlerService,
+    ProgramService,
   ],
   bootstrap: [AppComponent]
 })

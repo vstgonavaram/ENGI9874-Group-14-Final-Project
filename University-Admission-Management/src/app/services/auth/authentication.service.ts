@@ -45,15 +45,16 @@ export class AuthenticationService {
       email: username,
       password: password
     };
-    return this.http.post < any > (GlobalConstants.API_URL + 'api/v2/account/login', data)
-      .pipe(map((response: { status: any; data: any; }) => {
+    return this.http.post < any > (GlobalConstants.API_URL + 'login', data)
+      .pipe(map((response: any) => {
+        console.log('response', response)
         this.afterLogin(response);
         return response;
       }));
   }
 
   register(registerData: any) {
-    return this.http.post < any > (GlobalConstants.API_URL + 'api/v2/account/register', registerData)
+    return this.http.post < any > (GlobalConstants.API_URL + 'signup', registerData)
       .pipe(map(response => {
         return response;
       }));
@@ -70,7 +71,9 @@ export class AuthenticationService {
     this.router.navigate(['/login']);
   }
 
-  afterLogin(loginResponse: { status: any; data: any; }) {
+  afterLogin(loginResponse: any) {
+
+    console.log('loginResponse', loginResponse);
     if (loginResponse.status) {
       this.userDetails = loginResponse.data;
 
