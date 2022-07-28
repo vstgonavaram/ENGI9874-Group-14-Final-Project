@@ -24,6 +24,10 @@ public class Application {
 	private Boolean additionalDocumentRequest = false;
 	
 	@OneToOne
+	@JoinColumn(name = "programId")
+	private Program program;
+	
+	@OneToOne
 	@JoinColumn(name = "userId")
 	private User user;
 	
@@ -31,6 +35,12 @@ public class Application {
 	@JoinColumn(name = "documentId")
 	private Document document;
 	
+	public Program getProgram() {
+		return program;
+	}
+	public void setProgram(Program program) {
+		this.program = program;
+	}
 	
 	public Integer getId() {
 		return id;
