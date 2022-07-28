@@ -48,14 +48,11 @@ public class ApplicationController {
 	public Map addProgram(@RequestBody ApplicationEntity ae) {
 		
 	Application a = new Application();
-	a.setAdditionalDocumentRequest(ae.getAdditionalDocumentRequest());
 	a.setApplicationStatus(ae.getApplicationStatus());
 	User u = userRepo.findById(ae.getUserId()).get();
 	Program p = programRepo.findById(ae.getProgramId()).get();
-	Document d = documentRepo.findById(ae.getDocumentId()).get();
 	a.setUser(u);
 	a.setProgram(p);
-	a.setDocument(d);
 	applicationRepo.save(a);
 		
 		return Collections.singletonMap("status", true);
@@ -87,8 +84,8 @@ public class ApplicationController {
 			ae.setProgramCode(a.getProgram().getCode());
 			ae.setProgramName(a.getProgram().getName());
 			ae.setId(a.getId());
-			ae.setDocumentId(a.getDocument().getId());
-			ae.setDocumentName(a.getDocument().getDocumentName());
+			ae.setProgramId(a.getProgram().getId());
+			ae.setUserId(a.getUser().getId());
 			list.add(ae);
 		}
 		
