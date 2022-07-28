@@ -22,18 +22,18 @@
                   <tbody>
                     <tr class="align-items-center" *ngFor="let program of programs">
                         <td>
-                            {{program.programCode}}
+                            {{program.code}}
                         </td>
                         <td>
-                            {{program.programName}}
+                            {{program.name}}
                         </td>
                         <td>
-                            {{program.durationInMonths}}
+                            {{program.durationMonths}}
                         </td>
 
                         <td class="text-align-center">
                             <span class="remove-icon" >
-                              <mat-icon (click)="removeProgram(program)">cancel</mat-icon>
+                              <mat-icon (click)="removeProgram(program.id)">cancel</mat-icon>
                             </span>
                           </td>
                     </tr>

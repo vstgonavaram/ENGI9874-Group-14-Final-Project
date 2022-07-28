@@ -37,15 +37,10 @@ export class ProgramService {
 
   ApplyForProgram(data: any): Observable<any> {
     return this.apiService.post(`addProgram`, data)
-    // .pipe(tap(response => {
-    //   return response
-    // }))
+  }
 
-    // return new Observable((observer)=> {
-    //   observer.next({
-    //     status: true
-    //   })
-    // })
+  removeProgram(id: any): Observable<any> {
+    return this.apiService.delete(`deleteProgram/${id}`)
   }
 
 }

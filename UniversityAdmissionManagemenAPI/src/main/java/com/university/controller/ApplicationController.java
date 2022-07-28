@@ -1,6 +1,8 @@
 package com.university.controller;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,11 +28,11 @@ public class ApplicationController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/addApplication")
-	public String addProgram(@RequestBody Application application) {
+	public Map addProgram(@RequestBody Application application) {
 		
 	
 		applicationRepo.save(application);
-		return "program created";
+		return Collections.singletonMap("status", true);
 		
 	}
 	
@@ -56,13 +58,14 @@ public class ApplicationController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/updateStatus/{applicationId}/{statusId}")
-	public String updateStatus(@PathVariable("applicationId") Integer applicationId, 
+	public Map updateStatus(@PathVariable("applicationId") Integer applicationId, 
 			@PathVariable("statusId") Integer statusId) {
 		
 		Application application = applicationRepo.findById(applicationId).get();
 		application.setApplicationStatus(statusId);
 		applicationRepo.save(application);
-		return "status updated successfully";
+		
+		return Collections.singletonMap("status", true);
 		
 		
 	}

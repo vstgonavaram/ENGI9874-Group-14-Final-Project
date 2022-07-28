@@ -10,29 +10,24 @@ export class ApplicationsService {
   constructor(private apiService: ApiService) { }
 
   GetApplicationsByStudentId(studentId: any): Observable<any> {
-    // return this.apiService.get(`api/programs/all`)
-    //   .pipe(tap((response: { data: any; }) => {
-    //     return response.data
-    //   }));
+    return this.apiService.get(`viewApplication/${studentId}`);
 
-    return new Observable((observer)=> {
-      observer.next([
-        {
-          applicationId: 123,
-          programId: "MSC123",
-          fileId: 2,
-          fileName: '',
-          status: 'Submitted'
-        }
-      ])
-    })
+    // return new Observable((observer)=> {
+    //   observer.next([
+    //     {
+    //       applicationId: 123,
+    //       programId: "MSC123",
+    //       fileId: 2,
+    //       fileName: '',
+    //       status: 'Submitted'
+    //     }
+    //   ])
+    // })
   }
 
   GetAllApplications(): Observable<any> {
-    // return this.apiService.get(`api/programs/all`)
-    //   .pipe(tap((response: { data: any; }) => {
-    //     return response.data
-    //   }));
+    return this.apiService.get(`viewApplication`)
+ 
 
     return new Observable((observer)=> {
       observer.next([

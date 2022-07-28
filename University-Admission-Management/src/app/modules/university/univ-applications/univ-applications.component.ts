@@ -37,7 +37,7 @@ export class UnivApplicationsComponent implements OnInit {
   loadApplications(){
 
     this.applicationsService.GetAllApplications().subscribe((applications: any) => {  
-      console.log('applications', applications); 
+      console.log('applications in univ applications', applications); 
       
       const applicationsData: { programName: any; programDuration: any; programId: any; }[] = [];
 

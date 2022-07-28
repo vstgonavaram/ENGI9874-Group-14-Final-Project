@@ -46,9 +46,9 @@ export class AddProgramsComponent implements OnInit {
 
   addNewProgram(){
     const data = {
-      programCode: this.programForm.controls['programCode'].value,
-      programName: this.programForm.controls['programName'].value,
-      durationInMonths: this.programForm.controls['durationInMonths'].value,
+      code: this.programForm.controls['programCode'].value,
+      name: this.programForm.controls['programName'].value,
+      durationMonths: this.programForm.controls['durationInMonths'].value,
     };
 
     console.log('data', data);
@@ -57,10 +57,12 @@ export class AddProgramsComponent implements OnInit {
 
     // this.modalService.dismissAll();
 
-
+    
     this.programService.ApplyForProgram(data).subscribe((response: any) => {  
       console.log('programs added', response);    
       // this.programs = programs;
+      this.loadPrograms();
+      this.modalService.dismissAll();
     });
 
 
@@ -68,8 +70,17 @@ export class AddProgramsComponent implements OnInit {
 
   }
 
-  removeProgram(program: any){
-    console.log('program', program);
+  removeProgram(programId: any){
+
+    console.log('program delete', programId);
+
+
+    this.programService.removeProgram(programId).subscribe((response: any) => {  
+      console.log('programs added', response);    
+      // this.programs = programs;
+      this.loadPrograms();
+    });
+
   }
 
   openpopup() {

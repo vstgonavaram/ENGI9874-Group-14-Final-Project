@@ -1,7 +1,9 @@
 package com.university.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
@@ -30,14 +32,14 @@ public class ProgramController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/addProgram")
-	public String addProgram(@RequestBody Program program) {
+	public Map addProgram(@RequestBody Program program) {
 		
 		Program p = programRepo.findByName(program.getName());
 		if(!ObjectUtils.isEmpty(p)) {
-			return "program already exists";
+			return Collections.singletonMap("status", false);
 		}
 		programRepo.save(program);
-		return  "program created";
+		return Collections.singletonMap("status", true);
 		
 	}
 	
@@ -54,12 +56,12 @@ public class ProgramController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("/deleteProgram/{id}")
-	public String deleteProgram(@PathVariable Integer id) {
+	public Map deleteProgram(@PathVariable Integer id) {
 		
 		
 		programRepo.deleteById(id);
 		
-		return "Successfully deleted";
+		return Collections.singletonMap("status", true);
 		
 	}
 

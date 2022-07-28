@@ -45,14 +45,32 @@ export class AddUsersComponent implements OnInit {
     const data = {
       email: this.userForm.controls['email'].value,
       password: this.userForm.controls['password'].value,
-      confirmPassword: this.userForm.controls['confirmPassword'].value,
       firstName: this.userForm.controls['firstName'].value,
       lastName: this.userForm.controls['lastName'].value,
+      role: 1,
     };
 
     console.log('data', data);
 
-    this.users.push(data);
+    this.authenticationService.register(data).subscribe( 
+      response => {
+
+        console.log('user created', response);
+        // this.otpScreen = false;
+        // this.accountCreationScreen = true;
+        if (response.status) {
+          // this.showAccountCreationScreen();
+          this.users.push(data);
+        } else {
+          // this.showRegisterScreen();
+        }
+      },
+      error => {
+        console.log('error', error);
+      }
+    );
+
+
 
     this.modalService.dismissAll();
 

@@ -1,3 +1,4 @@
+import { UploadService } from './../../../services/upload.service';
 import { ProgramService } from './../../../services/program.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -30,6 +31,7 @@ export class ApplyComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
     private authenticationService: AuthenticationService,
+    private uploadService: UploadService,
     private router: Router,
     private programService: ProgramService,
     private readonly notifier: NotifierService,
@@ -49,6 +51,8 @@ export class ApplyComponent implements OnInit {
   }
 
   onFileSelected(event: any): void {
+
+    console.log('event', event);
     this.selectedFile = event.target.files[0] ?? null;
 
 }
@@ -70,18 +74,24 @@ export class ApplyComponent implements OnInit {
         status: 'Submitted',
       }
 
-      this.programService.ApplyForProgram(data).subscribe((response: any) => {      
+      // this.uploadService.uploadFile();
+
+
+
+
+
+      // this.programService.ApplyForProgram(data).subscribe((response: any) => {      
         
-        console.log('response', response);
+      //   console.log('response', response);
 
-        if(response.status){
-         this.notifier.notify('success', "Application Submitted Successfully.");
+      //   if(response.status){
+      //    this.notifier.notify('success', "Application Submitted Successfully.");
 
-          console.log('Application Submitted Successfully')
-          this.initializeForm();
-        }
+      //     console.log('Application Submitted Successfully')
+      //     this.initializeForm();
+      //   }
 
-      });
+      // });
     }
   }
 

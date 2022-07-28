@@ -66,13 +66,12 @@ export class LoginComponent implements OnInit {
       status : true,
       data: {
         user: {
-          email: 'saiteja@gmail.com',
+          email: 'sai@gmail.com',
           firstName: 'sai theja',
           lastName: 'Gonavaram',
-          role: 'UNIVERSITYADMIN',
-          id: 12,
+          role: 2,
+          id: 1,
         },
-        token: ''
       }
     }
 

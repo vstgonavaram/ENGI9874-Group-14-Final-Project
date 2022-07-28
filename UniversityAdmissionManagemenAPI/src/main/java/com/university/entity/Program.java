@@ -19,6 +19,7 @@ public class Program {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	private String code;
 	private Integer durationMonths;
 	private String description;
 	
@@ -46,6 +47,12 @@ public class Program {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
 	}
 	
 	
