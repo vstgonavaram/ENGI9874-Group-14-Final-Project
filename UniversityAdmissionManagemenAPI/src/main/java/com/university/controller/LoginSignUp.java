@@ -9,10 +9,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.university.entity.User;
@@ -52,19 +50,21 @@ public class LoginSignUp {
 		User u = userRepo.findByEmail(user.getEmail());
 		UserEntity userEntity = new UserEntity();
 		
-		if(ObjectUtils.isEmpty(u)) {
+		if(u == null || ObjectUtils.isEmpty(u)) {
 			userEntity.setMessage("Invalid Email");
-		}
+		} 
+		else {
 		if(!user.getPassword().equals(u.getPassword())) {
 			userEntity.setMessage("Invalid Password");
 		}
-		if(user.getPassword().equals(u.getPassword())) {
+		else {
 			userEntity.setEmail(u.getEmail());
 			userEntity.setFirstName(u.getFirstName());
 			userEntity.setId(u.getId());
 			userEntity.setLastName(u.getLastName());
 			userEntity.setRole(u.getRole());
 			userEntity.setMessage("Login Successfull");
+		}
 		}
 		return userEntity;
 		

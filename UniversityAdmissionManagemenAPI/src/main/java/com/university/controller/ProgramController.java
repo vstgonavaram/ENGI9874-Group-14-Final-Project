@@ -33,7 +33,7 @@ public class ProgramController {
 	public String addProgram(@RequestBody Program program) {
 		
 		Program p = programRepo.findByName(program.getName());
-		if(!ObjectUtils.isEmpty(p)) {
+		if(p!=null || !ObjectUtils.isEmpty(p)) {
 			return "program already exists";
 		}
 		programRepo.save(program);
