@@ -4,11 +4,15 @@
 package com.university.controller;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -70,6 +74,18 @@ public class LoginSignUp {
 		
 	}
 	
+	@GetMapping("viewFaculty")
+	public List<User> viewFaculty(){
+		List<User> userList = userRepo.findByRole(1);
+		return userList;
+		
+	}
 	
+	@DeleteMapping("deleteFaculty/{id}")
+	public String deleteFaculty(@PathVariable Integer id) {
+		userRepo.deleteById(id);
+		return "Faculty deleted";
+		
+	}
 
 }
