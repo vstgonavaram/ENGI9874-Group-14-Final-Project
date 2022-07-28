@@ -29,25 +29,25 @@ export class ApplicationsService {
     return this.apiService.get(`viewApplication`)
  
 
-    return new Observable((observer)=> {
-      observer.next([
-        {
-          applicationId: 123,
-          programId: "MSC123",
-          fileId: 2,
-          fileName: '',
-          status: 'Submitted'
-        },
-        {
-          applicationId: 1234,
-          programId: "MSC13",
-          fileId: 4,
-          fileName: '',
-          status: 'Submitted'
-        }
+    // return new Observable((observer)=> {
+    //   observer.next([
+    //     {
+    //       applicationId: 123,
+    //       programId: "MSC123",
+    //       fileId: 2,
+    //       fileName: '',
+    //       status: 'Submitted'
+    //     },
+    //     {
+    //       applicationId: 1234,
+    //       programId: "MSC13",
+    //       fileId: 4,
+    //       fileName: '',
+    //       status: 'Submitted'
+    //     }
 
-      ])
-    })
+    //   ])
+    // })
   }
 
 }

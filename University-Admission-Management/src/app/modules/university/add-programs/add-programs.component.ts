@@ -57,8 +57,8 @@ export class AddProgramsComponent implements OnInit {
 
     // this.modalService.dismissAll();
 
-    
-    this.programService.ApplyForProgram(data).subscribe((response: any) => {  
+
+    this.programService.AddProgram(data).subscribe((response: any) => {  
       console.log('programs added', response);    
       // this.programs = programs;
       this.loadPrograms();

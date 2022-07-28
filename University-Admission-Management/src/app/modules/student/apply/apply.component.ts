@@ -28,9 +28,10 @@ export class ApplyComponent implements OnInit {
 
 
   programs: any = []
+  userProfile: any;
 
   constructor( private fb: FormBuilder,
-    private authenticationService: AuthenticationService,
+    private authService: AuthenticationService,
     private uploadService: UploadService,
     private router: Router,
     private programService: ProgramService,
@@ -38,6 +39,8 @@ export class ApplyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.userProfile = this.authService.getUserData();
 
     this.loadPrograms();
 
@@ -52,14 +55,15 @@ export class ApplyComponent implements OnInit {
 
   onFileSelected(event: any): void {
 
-    console.log('event', event);
+    console.log('event', event.target);
+    console.log('event', event.target.files);
     this.selectedFile = event.target.files[0] ?? null;
 
 }
 
   initializeForm(){
-  this.selectedProgram = null;
-  this.selectedFile = null;
+    this.selectedProgram = null;
+    this.selectedFile = null;
   }
 
   applyForUniversity(){
@@ -67,31 +71,34 @@ export class ApplyComponent implements OnInit {
     console.log('selectedFile', this.selectedFile);
     if(this.selectedFile != null || this.selectedProgram != null){
      
+      const fileName = `${this.selectedProgram}-${this.userProfile.id}`
+
+      this.uploadService.uploadFile(this.selectedFile, fileName);
+
+
       const data = {
-        userId: 123,
-        programId: 21,
-        selectedFile: this.selectedFile,
-        status: 'Submitted',
+        user: {
+          userId: this.userProfile.id,
+        },
+        applicationStatus: 1,
       }
 
-      // this.uploadService.uploadFile();
 
+      console.log('fileName', fileName);
 
-
-
-
-      // this.programService.ApplyForProgram(data).subscribe((response: any) => {      
+   
+      this.programService.ApplyForProgram(data).subscribe((response: any) => {      
         
-      //   console.log('response', response);
+        console.log('response', response);
 
-      //   if(response.status){
-      //    this.notifier.notify('success', "Application Submitted Successfully.");
+        if(response.status){
+         this.notifier.notify('success', "Application Submitted Successfully.");
 
-      //     console.log('Application Submitted Successfully')
-      //     this.initializeForm();
-      //   }
+          console.log('Application Submitted Successfully')
+          this.initializeForm();
+        }
 
-      // });
+      });
     }
   }
 

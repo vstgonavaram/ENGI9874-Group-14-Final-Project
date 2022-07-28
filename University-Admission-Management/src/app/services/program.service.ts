@@ -35,8 +35,12 @@ export class ProgramService {
     // })
   }
 
-  ApplyForProgram(data: any): Observable<any> {
+  AddProgram(data: any): Observable<any> {
     return this.apiService.post(`addProgram`, data)
+  }
+
+  ApplyForProgram(data: any): Observable<any> {
+    return this.apiService.post(`addApplication`, data)
   }
 
   removeProgram(id: any): Observable<any> {
