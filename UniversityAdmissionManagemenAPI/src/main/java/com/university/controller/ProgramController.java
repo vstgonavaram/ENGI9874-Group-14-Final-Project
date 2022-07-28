@@ -35,8 +35,10 @@ public class ProgramController {
 	public Map addProgram(@RequestBody Program program) {
 		
 		Program p = programRepo.findByName(program.getName());
-		if(!ObjectUtils.isEmpty(p)) {
+
+		if(p!=null || !ObjectUtils.isEmpty(p)) {
 			return Collections.singletonMap("status", false);
+
 		}
 		programRepo.save(program);
 		return Collections.singletonMap("status", true);
