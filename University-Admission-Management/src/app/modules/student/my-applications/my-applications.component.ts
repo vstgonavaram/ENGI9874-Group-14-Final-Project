@@ -17,7 +17,7 @@ export class MyApplicationsComponent implements OnInit {
   userProfile: any;
 
 
-  constructor(  private programService: ProgramService,
+  constructor(private programService: ProgramService,
     private applicationsService: ApplicationsService,
     public authService: AuthenticationService,) { }
 
@@ -45,26 +45,26 @@ export class MyApplicationsComponent implements OnInit {
     this.applicationsService.GetApplicationsByStudentId(this.userProfile?.id).subscribe((applications: any) => {  
       console.log('applications', applications); 
       
-      const applicationsData: { programName: any; programDuration: any; programId: any; }[] = [];
+      // const applicationsData: { programName: any; programDuration: any; programId: any; }[] = [];
 
-      applications.forEach((application: any) => {
-        const program = this.getProgramName(application.programId)
+      // applications.forEach((application: any) => {
+      //   const program = this.getProgramName(application.programId)
 
-        const data = {
-          ...application,
-          programName: program.name,
-          programDuration: program.durationInMonths,
-        }
+      //   const data = {
+      //     ...application,
+      //     programName: program.name,
+      //     programDuration: program.durationInMonths,
+      //   }
 
-        applicationsData.push(data);
+      //   applicationsData.push(data);
 
-        console.log('program', program);
-      });
+      //   console.log('program', program);
+      // });
 
-      console.log('applicationsData', applicationsData);
+      // console.log('applicationsData', applicationsData);
 
 
-      this.applications = applicationsData;
+      this.applications = applications;
     });
   }
 

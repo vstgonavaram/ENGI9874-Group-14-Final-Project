@@ -50,4 +50,8 @@ export class ApplicationsService {
     // })
   }
 
+  updateApplicationStatus(applicationId: any,statusId: any): Observable<any> {
+    return this.apiService.get(`updateStatus/${applicationId}/${statusId}`)
+  }
+
 }

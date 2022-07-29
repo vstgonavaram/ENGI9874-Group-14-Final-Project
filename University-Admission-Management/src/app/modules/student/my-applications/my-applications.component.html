@@ -2,59 +2,53 @@
 
 <div class=" container-padding m-10">
     <div class="glass mt-10">
-        <h5>Applications</h5>
+        <h5>My Applications</h5>
 
         <div *ngIf="applications.length > 0">
 
-            <mat-table #table  class="applications-table" [dataSource]="applications">
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                      <th>Program Code</th>
+                      <th>Program Name</th>
+                      <th> Duration (In Months)</th>
+                      <th>Status</th>
+     
+                    </tr>
+                  </thead>
 
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-                <ng-container matColumnDef="programId">
-                    <th mat-header-cell *matHeaderCellDef> Program Code </th>
-                    <td mat-cell *matCellDef="let element"> {{element.programId }} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="programName">
-                    <th mat-header-cell *matHeaderCellDef> Program Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.programName }} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="programDuration">
-                    <th mat-header-cell *matHeaderCellDef> Program Duration (In Months) </th>
-                    <td mat-cell *matCellDef="let element"> {{element.programDuration }} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="fileName">
-                    <th mat-header-cell *matHeaderCellDef width="20%"> SOP </th>
-                    <td mat-cell *matCellDef="let element"> 
-                        {{element.fileName}} 
-                    </td>
-                </ng-container>
-
-                <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef width="10%"> Status </th>
-                    <td mat-cell *matCellDef="let element">
-                        <span *ngIf="element.status == 1" class="status-card statusSubmitted">
-                            {{element.status}}
-                        </span>  
-                        <span *ngIf="element.status == 2" class="status-card statusInReview">
-                            {{element.status}}
-                        </span> 
-                        <span *ngIf="element.status == 3" class="status-card statusApproved">
-                            {{element.status}}
-                        </span> 
-                        <span *ngIf="element.status == 4" class="status-card statusRejected">
-                            {{element.status}}
-                        </span> 
+                  <tbody>
+                    <tr class="align-items-center" *ngFor="let application of applications">
+                        <td>
+                            {{application.program.code}}
                         </td>
-                </ng-container>
+                        <td>
+                            {{application.program.name}}
+                        </td>
+                        <td>
+                            {{application.program.durationMonths}}
+                        </td>
 
-             
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </mat-table>
+                        <td>
+                            <span *ngIf="application.applicationStatus == 1" class="status-card statusSubmitted">
+                                Submitted
+                            </span>  
+                            <span *ngIf="application.applicationStatus == 2" class="status-card statusInReview">
+                                In Review
+                            </span> 
+                            <span *ngIf="application.applicationStatus == 3" class="status-card statusApproved">
+                                Approved
+                            </span> 
+                            <span *ngIf="application.applicationStatus == 4" class="status-card statusRejected">
+                               Rejected
+                            </span> 
+    
+                        </td>
+                    </tr>
+                  </tbody>
+            </table>
+
+
 
         </div>
 

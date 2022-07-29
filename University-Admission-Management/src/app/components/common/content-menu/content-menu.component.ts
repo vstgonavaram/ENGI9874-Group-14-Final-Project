@@ -42,7 +42,7 @@ export class ContentMenuComponent implements OnInit {
         {
           label: 'Profle',
           faIcon: 'person',
-          link: '/app/profile',
+          link: '/app/student/profile',
           items: []
         }
       ];

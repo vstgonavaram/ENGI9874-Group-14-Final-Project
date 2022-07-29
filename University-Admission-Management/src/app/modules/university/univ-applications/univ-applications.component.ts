@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApplicationsService } from 'src/app/services/applications.service';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
 import { ProgramService } from 'src/app/services/program.service';
+import {   DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-univ-applications',
@@ -10,11 +12,18 @@ import { ProgramService } from 'src/app/services/program.service';
 })
 export class UnivApplicationsComponent implements OnInit {
 
+  @ViewChild('reviewApplicationPopup', { static: true }) reviewPopup: any = null;
+
   applications: any = [];
   programs: any = [];
+
+  selectedApplication:  any = null;
+
   constructor(private programService: ProgramService,
     private applicationsService: ApplicationsService,
     public authService: AuthenticationService,
+    private modalService: NgbModal,
+    private domSanitizer: DomSanitizer,
     ) { }
 
   ngOnInit(): void {
@@ -26,13 +35,20 @@ export class UnivApplicationsComponent implements OnInit {
 
   loadPrograms() {
 
-    console.log('loading programs');
-
     this.programService.GetPrograms().subscribe((programs: any) => {      
-      console.log('programs', programs);
       this.programs = programs;
     });
   }
+
+  approveApplication(applicationId: any){
+
+    this.applicationsService.updateApplicationStatus(applicationId,3).subscribe((response: any) => {      
+      if(response.status){
+        this.loadApplications();
+      }
+    });
+  }
+
 
   loadApplications(){
 

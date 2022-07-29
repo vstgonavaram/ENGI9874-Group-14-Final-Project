@@ -74,14 +74,15 @@ export class AuthenticationService {
   afterLogin(loginResponse: any) {
 
     console.log('loginResponse', loginResponse);
-    if (loginResponse.status) {
-      this.userDetails = loginResponse.data;
+    if (loginResponse.email) {
 
-      if (this.userDetails.user.role == this.GlobalConstants.RoleJson.student) {
+      this.userDetails = loginResponse;
+
+      if (this.userDetails.role == this.GlobalConstants.RoleJson.student) {
         this.userDetails.isStudent = true;
       }
 
-      localStorage.setItem('userDetails', JSON.stringify(loginResponse.data));
+      localStorage.setItem('userDetails', JSON.stringify(loginResponse));
       this.userLoaded(this.userDetails);
     }
   }
@@ -105,16 +106,19 @@ export class AuthenticationService {
 
   getLoggedInUser() {
     if (this.userDetails !== undefined || this.userDetails !== null) {
+      console.log('this.userDetails first if ', this.userDetails)
       return this.userDetails;
     } else {
       this.userDetails = JSON.parse(localStorage.getItem('userDetails')!);
       this.userLoaded(this.userDetails);
+      console.log('this.userDetails else condition', this.userDetails)
+
       return this.userDetails;
     }
   }
 
   getUserData() {
-    return this.getLoggedInUser().user;
+    return this.getLoggedInUser();
   }
 
   isUserLoggedIn() {
@@ -122,7 +126,7 @@ export class AuthenticationService {
   }
 
   isUnivAdmin() {
-    if (this.userDetails.user.role == this.GlobalConstants.RoleJson.univAdmin) {
+    if (this.userDetails?.role == this.GlobalConstants.RoleJson.univAdmin) {
       return true;
     } else {
       return false;
@@ -130,10 +134,8 @@ export class AuthenticationService {
   }
 
   isStudent() {
-    console.log('this.userDetails.user.role', this.userDetails.user.role);
-    console.log('this.GlobalConstants.RoleJson.student', this.GlobalConstants.RoleJson.student);
-    console.log('role comparison', this.userDetails.user.role == this.GlobalConstants.RoleJson.student)
-    if (this.userDetails.user.role == this.GlobalConstants.RoleJson.student) {
+
+    if (this.userDetails?.role == this.GlobalConstants.RoleJson.student) {
       return true;
     } else {
       return false;
@@ -141,7 +143,7 @@ export class AuthenticationService {
   }
 
   isUnivUser() {
-    if (this.userDetails.user.role == this.GlobalConstants.RoleJson.univUser) {
+    if (this.userDetails?.role == this.GlobalConstants.RoleJson.univUser) {
       return true;
     } else {
       return false;

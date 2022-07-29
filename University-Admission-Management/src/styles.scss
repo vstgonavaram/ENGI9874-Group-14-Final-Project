@@ -91,6 +91,30 @@ body{
     }
 }
 
+.btn-outline-success {
+    color: #0c8714 !important ;
+    border-color: #0c8714 !important ;
+    background-color: white !important ;
+
+    &:hover {
+        color: #fff !important ;
+        background-color: #0c8714 !important ;
+        border-color: #0c8714 !important ;
+    }
+}
+
+.btn-outline-error {
+    color: #721c24 !important ;
+    border-color: #721c24 !important ;
+    background-color: white !important ;
+
+    &:hover {
+        color: #fff !important ;
+        background-color: #721c24 !important ;
+        border-color: #721c24 !important ;
+    }
+}
+
 .primary-blue{
     color: #2b6cb3;
     }
@@ -173,6 +197,10 @@ body{
     text-align: center;
 }
 
+th, td{
+    text-align: center;
+}
+
 //background
 
 .background-white {
@@ -199,6 +227,9 @@ body{
 //     background-color: #eeeeee;
 // }
 
+td, th {
+    vertical-align: middle !important;
+}
 
 .mat-table{
     th{

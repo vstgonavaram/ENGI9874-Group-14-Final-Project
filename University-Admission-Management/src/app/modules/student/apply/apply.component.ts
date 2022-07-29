@@ -75,12 +75,14 @@ export class ApplyComponent implements OnInit {
 
       this.uploadService.uploadFile(this.selectedFile, fileName);
 
+      // program: {
+      //   programId: this.selectedProgram,
+      // },
 
       const data = {
-        user: {
-          userId: this.userProfile.id,
-        },
+        userId: this.userProfile.id,
         applicationStatus: 1,
+        programId: this.selectedProgram,
       }
 
 

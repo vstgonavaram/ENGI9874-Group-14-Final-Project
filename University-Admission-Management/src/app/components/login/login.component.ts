@@ -29,28 +29,28 @@ export class LoginComponent implements OnInit {
 
 
 
-    this.onLoginRouting(false);
+    this.onLoginRouting();
 
     
   }
 
-  processLoginResponse(response: { status: any; data: any; }, errorMessage: string) {
+  processLoginResponse(response: any, errorMessage: string) {
 
     this.loading = false;
-    if (response.status) {
+    if (response.email) {
 
-      this.onLoginRouting(true);
+      this.onLoginRouting();
 
-      this.authenticationService.afterLogin(response)
+      // this.authenticationService.afterLogin(response)
 
-      // if (this.authenticationService.isSuperAdmin() == true) {
-      //   this.router.navigate(['v1/admin']);
+      // if (this.authenticationService.isUnivAdmin() == true) {
+      //   this.router.navigate(['app/university/admin']);
       // }
-      // else if (this.authenticationService.isExternal() == true) {
-      //   this.router.navigate(['v1/naac-point/external']);
+      // else if(this.authenticationService.isUnivUser() == true){
+      //   this.router.navigate(['app/university/applications']);
       // }
-      // else {
-      //   this.router.navigate(['v1']);
+      // else if (this.authenticationService.isStudent() == true) {
+      //   this.router.navigate(['app/student/applications']);
       // }
     }
     else {
@@ -62,40 +62,44 @@ export class LoginComponent implements OnInit {
   login() {
 
 
-    let loginData = {
-      status : true,
-      data: {
-        user: {
-          email: 'sai@gmail.com',
-          firstName: 'sai theja',
-          lastName: 'Gonavaram',
-          role: 2,
-          id: 1,
-        },
-      }
-    }
-
-    this.processLoginResponse(loginData, "Email or Password is incorrect")
-
-    // this.loading = true;
-    // this.authenticationService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
-    //   .subscribe(
-    //     (        response: any) => {
-    //       this.processLoginResponse(response, "Email or Password is incorrect")
-
+    // let loginData = {
+    //   status : true,
+    //   data: {
+    //     user: {
+    //       email: 'sai@gmail.com',
+    //       firstName: 'sai theja',
+    //       lastName: 'Gonavaram',
+    //       role: 1,
+    //       id: 6,
     //     },
-    //     (        error: any) => {
-    //       this.loading = false;
-    //       this.loginMessage = "Email or Password is incorrect";
-    //     }
-    //   );
+    //   }
+    // }
+
+    // this.processLoginResponse(loginData, "Email or Password is incorrect")
+
+    this.loading = true;
+    this.authenticationService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
+      .subscribe(
+        (        response: any) => {
+
+          console.log('response', response);
+
+          this.processLoginResponse(response, "Email or Password is incorrect")
+
+        },
+        (        error: any) => {
+          this.loading = false;
+          this.loginMessage = "Email or Password is incorrect";
+        }
+      );
   }
 
-  onLoginRouting(mock: boolean) {
+  onLoginRouting() {
 
     console.log('navigating to student home', this.authenticationService.isUserLoggedIn());
 
     if (this.authenticationService.isUserLoggedIn()) {
+    //   console.log('')
       if (this.authenticationService.isUnivAdmin() == true) {
         this.router.navigate(['app/university/admin']);
       }
@@ -107,10 +111,10 @@ export class LoginComponent implements OnInit {
       }
     }
 
-    if(mock){
-      console.log('mock navigating')
-      this.router.navigate(['app/university/admin']);
-    }
+    // if(mock){
+    //   console.log('mock navigating')
+    //   this.router.navigate(['app/university/admin']);
+    // }
 
 
     

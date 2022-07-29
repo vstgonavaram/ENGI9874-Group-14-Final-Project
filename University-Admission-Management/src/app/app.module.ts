@@ -84,6 +84,7 @@ const customNotifierOptions: NotifierOptions = {
     ContentMenuComponent,
     HeaderComponent,
     ProfileComponent,
+    
   ],
   imports: [
     BrowserModule,
