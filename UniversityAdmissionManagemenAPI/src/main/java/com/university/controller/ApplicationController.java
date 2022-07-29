@@ -45,7 +45,7 @@ public class ApplicationController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/addApplication")
-	public Map addProgram(@RequestBody ApplicationEntity ae) {
+	public Map addApplication(@RequestBody ApplicationEntity ae) {
 		
 	Application a = new Application();
 	a.setApplicationStatus(ae.getApplicationStatus());
@@ -61,7 +61,7 @@ public class ApplicationController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/viewApplication/{userId}")
-	public List<Application> viewProgramListWithUser(@PathVariable("userId") Integer userId) {
+	public List<Application> viewApplicationWithUser(@PathVariable("userId") Integer userId) {
 		
 		List<Application> applications = applicationRepo.findByUserId(userId);
 		return applications;
