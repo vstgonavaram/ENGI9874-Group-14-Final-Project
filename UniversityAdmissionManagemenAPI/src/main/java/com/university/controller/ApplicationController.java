@@ -74,9 +74,11 @@ public class ApplicationController {
 	public List<ApplicationEntity> viewProgramList() {
 		
 		List<Application> applications = applicationRepo.findAll();
-		ApplicationEntity ae = new ApplicationEntity();
+		
 		List<ApplicationEntity> list = new ArrayList<ApplicationEntity>();
 		for(Application a : applications) {
+			ApplicationEntity ae = new ApplicationEntity();
+			
 			ae.setAdditionalDocumentRequest(a.getAdditionalDocumentRequest());
 			ae.setApplicationStatus(a.getApplicationStatus());
 			ae.setFirstName(a.getUser().getFirstName());
