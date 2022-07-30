@@ -48,18 +48,18 @@
 
 
                                 <div class="doc-btn">
-                                    <a class="btn btn-sm btn-primary"  href="https://univ-admission-management.s3.ca-central-1.amazonaws.com/6-1" target="_blank">
+                                    <a class="btn btn-sm btn-primary"  href="https://univ-admission-management.s3.ca-central-1.amazonaws.com/{{application.programId}}-{{application.userId}}" target="_blank">
         
                                         View Document
                                     </a>
                                 </div>
     
                                 <div class="d-flex justify-content-around">
-                                    <button class="btn btn-sm btn-outline-success" (click)="approveApplication(application.id)">
+                                    <button class="btn btn-sm btn-outline-success" (click)="updateApplication(application.id, 3)">
         
                                         Approve
                                       </button>
-                                      <button class="btn btn-sm btn-outline-error ml-5" >
+                                      <button class="btn btn-sm btn-outline-error ml-5" (click)="updateApplication(application.id, 4)">
             
                                         Reject
                                       </button>

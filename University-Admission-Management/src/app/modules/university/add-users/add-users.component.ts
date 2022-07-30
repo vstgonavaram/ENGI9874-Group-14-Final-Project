@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
 import { FormService } from 'src/app/services/form.service';
+import { ProgramService } from 'src/app/services/program.service';
 
 @Component({
   selector: 'app-add-users',
@@ -15,19 +16,25 @@ export class AddUsersComponent implements OnInit {
   userForm: FormGroup = new FormGroup({});
 
   users: any = [{
-    confirmPassword: "Admin123",
-  email: "sd@gmail.com",
-  firstName: "sai",
-  lastName: "g",
-  password: "Admin123",
+  email: "csf@mun.ca",
+  firstName: "Computer",
+  lastName: "Faculty",
+},
+{
+  email: "enf@mun.ca",
+  firstName: "Engineering",
+  lastName: "Faculty",
 }];
 
   constructor(private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private formService: FormService,
-    private authenticationService: AuthenticationService,) { }
+    private authenticationService: AuthenticationService,
+    private programService: ProgramService) { }
 
   ngOnInit(): void {
+
+    // this.getUsers();
     this.generateForm();
   }
 
@@ -38,6 +45,16 @@ export class AddUsersComponent implements OnInit {
       'email': ['', [Validators.required, this.formService.emailValidator()]],
       'password': ['', [Validators.required]],
       'confirmPassword': ['', [Validators.required]],
+    });
+  }
+
+  getUsers(){
+
+    console.log('loading programs');
+
+    this.programService.GetPrograms().subscribe((users: any) => {  
+      console.log('users got', users);    
+      this.users = users;
     });
   }
 

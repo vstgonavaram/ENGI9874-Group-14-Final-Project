@@ -35,6 +35,12 @@ export class ProgramService {
     // })
   }
 
+  GetUsers():Observable<any> {
+ 
+    return this.apiService.get('viewFaculty');
+
+}
+
   AddProgram(data: any): Observable<any> {
     return this.apiService.post(`addProgram`, data)
   }

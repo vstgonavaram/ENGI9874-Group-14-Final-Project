@@ -40,9 +40,9 @@ export class UnivApplicationsComponent implements OnInit {
     });
   }
 
-  approveApplication(applicationId: any){
+  updateApplication(applicationId: any, applicationStatus: any){
 
-    this.applicationsService.updateApplicationStatus(applicationId,3).subscribe((response: any) => {      
+    this.applicationsService.updateApplicationStatus(applicationId,applicationStatus).subscribe((response: any) => {      
       if(response.status){
         this.loadApplications();
       }
