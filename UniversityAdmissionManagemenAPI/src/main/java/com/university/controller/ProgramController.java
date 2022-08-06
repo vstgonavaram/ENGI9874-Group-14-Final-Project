@@ -30,7 +30,7 @@ public class ProgramController {
 	@Autowired
 	private IProgramRepo programRepo;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4300")
 	@PostMapping("/addProgram")
 	public Map addProgram(@RequestBody Program program) {
 		
@@ -45,7 +45,7 @@ public class ProgramController {
 		
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4300")
 	@GetMapping("/viewProgram")
 	public List<Program> viewProgramList() {
 		
@@ -56,7 +56,7 @@ public class ProgramController {
 		
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4300")
 	@DeleteMapping("/deleteProgram/{id}")
 	public Map deleteProgram(@PathVariable Integer id) {
 		

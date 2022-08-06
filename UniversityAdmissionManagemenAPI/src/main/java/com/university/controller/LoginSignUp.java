@@ -33,7 +33,7 @@ public class LoginSignUp {
 	@Autowired 
 	private IUserRepo userRepo;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4300")
 	@PostMapping("/signup")
 	public Map signup(@RequestBody User user) {
 		User u = userRepo.findByEmail(user.getEmail());
@@ -47,7 +47,7 @@ public class LoginSignUp {
 		
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4300")
 	@PostMapping("/login")
 	public UserEntity login(@RequestBody User user) {
 		
@@ -74,6 +74,7 @@ public class LoginSignUp {
 		
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4300")
 	@GetMapping("viewFaculty")
 	public List<User> viewFaculty(){
 		List<User> userList = userRepo.findByRole(1);
@@ -81,6 +82,7 @@ public class LoginSignUp {
 		
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4300")
 	@DeleteMapping("deleteFaculty/{id}")
 	public String deleteFaculty(@PathVariable Integer id) {
 		userRepo.deleteById(id);

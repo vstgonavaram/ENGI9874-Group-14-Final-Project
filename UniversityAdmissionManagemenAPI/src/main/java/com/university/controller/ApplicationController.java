@@ -43,7 +43,7 @@ public class ApplicationController {
 	@Autowired
 	private IProgramRepo programRepo;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4300")
 	@PostMapping("/addApplication")
 	public Map addApplication(@RequestBody ApplicationEntity ae) {
 		
@@ -59,7 +59,7 @@ public class ApplicationController {
 		
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4300")
 	@GetMapping("/viewApplication/{userId}")
 	public List<Application> viewApplicationWithUser(@PathVariable("userId") Integer userId) {
 		
@@ -69,7 +69,7 @@ public class ApplicationController {
 		
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4300")
 	@GetMapping("/viewApplication")
 	public List<ApplicationEntity> viewProgramList() {
 		
@@ -96,7 +96,7 @@ public class ApplicationController {
 		
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4300")
 	@GetMapping("/updateStatus/{applicationId}/{statusId}")
 	public Map updateStatus(@PathVariable("applicationId") Integer applicationId, 
 			@PathVariable("statusId") Integer statusId) {
