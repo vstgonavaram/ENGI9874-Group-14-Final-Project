@@ -1,0 +1,45 @@
+
+.profile-container{
+    color: black;
+    margin: 10px;
+    text-align: center;
+}
+
+.router-link-active {     background-color: #4e7ca7;
+    color: white; }
+
+.mat-list-item{
+    // background: #486ead;
+    // color: white;
+    cursor: pointer;
+}
+
+.side-menu{
+    .nav-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .mat-icon{
+            margin-right: 10px;
+        }
+    }
+}
+
+.bottom-tabs{
+    position: absolute;
+    bottom: 5px;
+    // width: 100%;
+    margin: 0 10px;
+    .bottom-tabs-item{
+        display: flex;
+        cursor: pointer;
+        .icon{
+            margin-right: 5px
+        }
+
+        .label{
+
+        }
+    }
+}

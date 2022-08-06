@@ -1,0 +1,108 @@
+<div class="glass programs-container">
+
+    <div>
+        <div class="d-flex justify-content-between mt-3 mb-2">
+            <h5>Programs</h5>
+
+            <button class="btn btn-outline-primary btn-sm margin-side" type="button" (click)="openpopup()">Add New Program</button>
+
+        </div>
+
+          <div>
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                      <th>Program Code</th>
+                      <th>Program Name</th>
+                      <th>Duration (In Months)</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr class="align-items-center" *ngFor="let program of programs">
+                        <td>
+                            {{program.code}}
+                        </td>
+                        <td>
+                            {{program.name}}
+                        </td>
+                        <td>
+                            {{program.durationMonths}}
+                        </td>
+
+                        <td class="text-align-center">
+                            <span class="remove-icon" >
+                              <mat-icon (click)="removeProgram(program.id)">cancel</mat-icon>
+                            </span>
+                          </td>
+                    </tr>
+                  </tbody>
+            </table>
+        </div>
+       
+    </div>
+</div>
+
+<ng-template #addProgramPopup let-modal>
+
+        <div class="add-program-form-container">
+
+            <div>
+
+                <h3 class="login-text col-md-12 mb-4">Add New Program</h3>
+
+
+                <form *ngIf="programForm" name="form" [formGroup]="programForm">
+
+
+                    <mat-form-field class="col-md-12">
+                        <input matInput type="text" formControlName="programCode" placeholder="Program Code" required />
+
+                    
+                    </mat-form-field>
+
+                    <mat-form-field class="col-md-12">
+                        <input matInput type="text" formControlName="programName" placeholder="Program Name" required />
+
+              
+                    </mat-form-field>
+
+                    <mat-form-field class="col-md-12">
+                        <input matInput type="number" formControlName="durationInMonths" placeholder="Duration (In Months)"
+                         required />
+
+                
+                    </mat-form-field>
+
+
+
+
+                    <div  class="btn-container">
+                        <button type="button" class="btn btn-md btn-primary" [disabled]="!programForm.valid"
+                            (click)="addNewProgram()">
+
+                            <span>
+                                Add New Program
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+        
+
+                </form>
+
+         
+
+            </div>
+
+
+
+        </div>
+
+   
+  </ng-template>
+

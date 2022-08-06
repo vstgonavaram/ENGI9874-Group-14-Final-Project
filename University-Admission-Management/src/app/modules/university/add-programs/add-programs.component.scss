@@ -1,0 +1,36 @@
+.programs-container{
+    margin-top: 40px;
+}
+
+.add-program-form-container{
+    margin: 20px;
+
+    .btn-container{
+        margin-top: 10px;
+    }
+}
+
+.programs-container{
+
+
+    .table{
+        td, th{
+            text-align: center;
+        }
+        th{
+            font-weight: 500;
+     
+         
+        }
+
+    }
+
+    .remove-icon{
+        mat-icon{
+            color: red !important;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}

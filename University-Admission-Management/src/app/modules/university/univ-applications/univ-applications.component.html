@@ -1,0 +1,100 @@
+
+<div class="container-padding">
+    <div class="glass programs-container">
+        <h5>Applications</h5>
+
+        <div class="review-application-container">
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                      <th>Program Code</th>
+                      <th>Program Name</th>
+                      <th> Name</th>
+                      <!-- <th>Status</th> -->
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr class="align-items-center" *ngFor="let application of applications">
+                        <td>
+                            {{application.programCode}}
+                        </td>
+                        <td>
+                            {{application.programName}}
+                        </td>
+                        <td>
+                            {{application.firstName}} {{application.lastName}}
+                        </td>
+
+                        <!-- <td class="text-align-center">
+                            <span *ngIf="application.applicationStatus == 1" class="status-card statusSubmitted">
+                                Submitted
+                            </span>  
+                            <span *ngIf="application.applicationStatus == 2" class="status-card statusInReview">
+                                In Review
+                            </span> 
+                            <span *ngIf="application.applicationStatus == 3" class="status-card statusApproved">
+                                Approved
+                            </span> 
+                            <span *ngIf="application.applicationStatus == 4" class="status-card statusRejected">
+                               Rejected
+                            </span> 
+                        </td> -->
+
+                        <td class="btn-container">
+
+                            <div *ngIf="application.applicationStatus == 1">
+
+
+                                <div class="doc-btn">
+                                    <a class="btn btn-sm btn-primary"  href="https://univ-admission-management.s3.ca-central-1.amazonaws.com/{{application.programId}}-{{application.userId}}" target="_blank">
+        
+                                        View Document
+                                    </a>
+                                </div>
+    
+                                <div class="d-flex justify-content-around">
+                                    <button class="btn btn-sm btn-outline-success" (click)="updateApplication(application.id, 3)">
+        
+                                        Approve
+                                      </button>
+                                      <button class="btn btn-sm btn-outline-error ml-5" (click)="updateApplication(application.id, 4)">
+            
+                                        Reject
+                                      </button>
+                                </div>
+
+                            </div>
+
+                            <div *ngIf="application.applicationStatus !== 1">
+                                <span *ngIf="application.applicationStatus == 1" class="status-card statusSubmitted">
+                                    Submitted
+                                </span>  
+                                <span *ngIf="application.applicationStatus == 2" class="status-card statusInReview">
+                                    In Review
+                                </span> 
+                                <span *ngIf="application.applicationStatus == 3" class="status-card statusApproved">
+                                    Approved
+                                </span> 
+                                <span *ngIf="application.applicationStatus == 4" class="status-card statusRejected">
+                                   Rejected
+                                </span> 
+                            </div>
+
+                            
+               
+
+                        </td>
+
+                    </tr>
+                  </tbody>
+            </table>
+    
+        </div>
+    </div>
+
+
+    
+</div>
+

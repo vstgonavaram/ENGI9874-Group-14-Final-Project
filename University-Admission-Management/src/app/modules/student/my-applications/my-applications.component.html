@@ -1,0 +1,59 @@
+
+
+<div class=" container-padding m-10">
+    <div class="glass mt-10">
+        <h5>My Applications</h5>
+
+        <div *ngIf="applications.length > 0">
+
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                      <th>Program Code</th>
+                      <th>Program Name</th>
+                      <th> Duration (In Months)</th>
+                      <th>Status</th>
+     
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr class="align-items-center" *ngFor="let application of applications">
+                        <td>
+                            {{application.program.code}}
+                        </td>
+                        <td>
+                            {{application.program.name}}
+                        </td>
+                        <td>
+                            {{application.program.durationMonths}}
+                        </td>
+
+                        <td>
+                            <span *ngIf="application.applicationStatus == 1" class="status-card statusSubmitted">
+                                Submitted
+                            </span>  
+                            <span *ngIf="application.applicationStatus == 2" class="status-card statusInReview">
+                                In Review
+                            </span> 
+                            <span *ngIf="application.applicationStatus == 3" class="status-card statusApproved">
+                                Approved
+                            </span> 
+                            <span *ngIf="application.applicationStatus == 4" class="status-card statusRejected">
+                               Rejected
+                            </span> 
+    
+                        </td>
+                    </tr>
+                  </tbody>
+            </table>
+
+
+
+        </div>
+
+        <div *ngIf="applications.length == 0">
+            <p>No applications exist. Please Apply</p>
+        </div>
+    </div>
+</div>

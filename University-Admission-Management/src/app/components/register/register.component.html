@@ -1,0 +1,134 @@
+<div class="login-container">
+    <div>
+        <h2 class="text-center mt-3 login-text">University Admission Management </h2>
+    </div>
+    <div class="login-card shadow-glass">
+        <div class="login-form-container">
+
+            <div class="login-form {{accountCreationScreen ? 'confetti-bg' : '' }}">
+
+                <!-- class="{{accountCreationScreen ? 'confetti-bg' : '' }}" -->
+                <div>
+
+                    <h3 class="login-text col-md-12 mb-4">Sign up</h3>
+
+                    <div *ngIf="errorMessage.length>0" class="login-error">{{errorMessage}}</div>
+
+                    <form *ngIf="registerScreen" name="form" [formGroup]="registerForm">
+
+
+                        <!-- <p> registerScreen: {{registerScreen}}</p>
+                    
+                                    <p>accountCreationScreen: {{ accountCreationScreen}}</p> -->
+
+                        <mat-form-field class="col-md-12">
+                            <input matInput type="text" formControlName="firstName" placeholder="First Name" required />
+
+                            <mat-error>
+                                <app-print-error [control]="registerForm.controls['firstName']"></app-print-error>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-12">
+                            <input matInput type="text" formControlName="lastName" placeholder="Last Name" required />
+
+                            <mat-error>
+                                <app-print-error [control]="registerForm.controls['lastName']"></app-print-error>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-12">
+                            <input matInput type="email" formControlName="email" placeholder="Email"
+                             required />
+
+                            <mat-error>
+                                <app-print-error [control]="registerForm.controls['email']"></app-print-error>
+                            </mat-error>
+                        </mat-form-field>
+
+
+
+
+                        <mat-form-field class="col-md-12">
+                            <input matInput type="password" autocomplete="new-password" formControlName="password"
+                                placeholder="Password" />
+
+                            <mat-error>
+                                <app-print-error [control]="registerForm.controls['password']"></app-print-error>
+                            </mat-error>
+
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-12">
+                            <input matInput type="password" autocomplete="off" formControlName="confirmPassword"
+                                placeholder="Confirm Password" />
+
+                            <mat-error>
+                                <app-print-error [control]="registerForm.controls['confirmPassword']"></app-print-error>
+
+                            </mat-error>
+
+                        </mat-form-field>
+
+                        <div class="password-error-container"
+                            *ngIf="registerForm.value.confirmPassword != '' && registerForm.value.password != registerForm.value.confirmPassword">
+                            <span class="text-danger">paswords not matching</span>
+                        </div>
+
+  
+                        <div *ngIf="registerScreen" class="btn-container">
+                            <button type="button" class="btn btn-md btn-primary" [disabled]="!registerForm.valid"
+                                (click)="submitRegister()">
+
+                                <span *ngIf="!loading">
+                                    SignUp
+                                </span>
+                                <img *ngIf="loading"
+                                    src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                            </button>
+
+                        </div>
+
+
+                        <!-- <div class="btn-container" *ngIf="accountCreationScreen">
+                                        <button type="button" class="btn btn-md btn-primary" [disabled]="!registerForm.valid"
+                                            (click)="register()">
+                    
+                                            <span *ngIf="!loading">
+                                                Register
+                                            </span>
+                                            <img *ngIf="loading"
+                                                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                                        </button>
+                    
+                                    </div> -->
+
+                    </form>
+
+             
+
+
+
+                    <div *ngIf="accountCreationScreen" class="account-success">
+                        <p class="success">Account Created Successfully.</p>
+
+                        <p> Please <a routerLink="/login">Sign in</a> to continue
+                        </p>
+                    </div>
+
+
+                    <p *ngIf="!accountCreationScreen" class="navigate-link"> Already have an account? <a
+                            routerLink="/login">Sign in</a>
+                    </p>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

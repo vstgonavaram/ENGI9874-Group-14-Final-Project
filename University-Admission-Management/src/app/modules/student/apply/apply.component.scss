@@ -1,0 +1,21 @@
+
+.apply-container{
+    .form-container{
+        margin-top: 20px;
+        
+    
+        .mat-form-field{
+            width: 60%;
+        }
+
+        .file-name{
+            margin-left: 20px;
+        }
+
+        .buton-container{
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
